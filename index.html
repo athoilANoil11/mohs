@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>moh ~ personal site</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&display=swap');
+
+:root {
+  --ink: #111111;
+  --paper: #ffffff;
+  --paper-off: #fbfbf9;
+  --grid-line: #e2e2e2;
+  --gray-head: #d0d0d0;
+  --gray-btn: #d8d8d8;
+  --gray-btn-dark: #c2c2c2;
+  --muted: #555555;
+  --shadow-off: 4px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 22px 22px;
+  color: var(--ink);
+  font-family: 'VT323', 'Courier New', monospace;
+  font-size: 17px;
+  line-height: 1.35;
+  -webkit-font-smoothing: none;
+}
+
+a {
+  color: var(--ink);
+}
+
+.page {
+  max-width: 1040px;
+  margin: 18px auto 40px auto;
+  padding: 0 12px;
+}
+
+/* ---------- TOP BAR ---------- */
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  border: 1.5px solid var(--ink);
+  background: var(--paper);
+  padding: 5px 10px;
+  font-size: 15px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.clockbox {
+  border: 1.5px solid var(--ink);
+  background: var(--paper);
+  padding: 5px 14px;
+  font-size: 15px;
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.mailicon {
+  border: 1.5px solid var(--ink);
+  background: var(--paper);
+  padding: 4px 7px;
+  display: flex;
+  align-items: center;
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+/* ---------- ADDRESS BAR ---------- */
+
+.addressbar {
+  margin-bottom: 8px;
+}
+
+.urlfield {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1.5px solid var(--ink);
+  background: var(--paper-off);
+  padding: 7px 12px;
+  box-shadow: 2px 2px 0 var(--ink);
+  font-size: 16px;
+}
+
+.urlfield .homeicon {
+  flex-shrink: 0;
+}
+
+.urlfield span:nth-child(2) {
+  flex: 1;
+}
+
+.urlfield .star {
+  color: var(--ink);
+  font-size: 14px;
+}
+
+/* ---------- NAV ---------- */
+
+.navrow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.navbtn {
+  font-family: inherit;
+  font-size: 15px;
+  background: var(--gray-btn);
+  border: 1.5px solid var(--ink);
+  padding: 6px 14px;
+  box-shadow: 2px 2px 0 var(--ink);
+  cursor: pointer;
+  color: var(--ink);
+}
+
+.navbtn:hover {
+  background: var(--gray-btn-dark);
+}
+
+.navbtn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 var(--ink);
+}
+
+/* ---------- LAYOUT GRID ---------- */
+
+.layout {
+  display: grid;
+  grid-template-columns: 235px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.tworow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+/* ---------- WINDOW ---------- */
+
+.window {
+  border: 1.5px solid var(--ink);
+  background: var(--paper);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.winhead {
+  background: var(--gray-head);
+  border-bottom: 1.5px solid var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 8px;
+}
+
+.winicon {
+  font-size: 9px;
+}
+
+.wintitle {
+  flex: 1;
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.winctl {
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--ink);
+  opacity: 0.75;
+}
+
+.winbody {
+  padding: 12px;
+}
+
+/* ---------- SHARED TEXT ---------- */
+
+.smalltext {
+  font-size: 16px;
+  color: var(--ink);
+}
+
+.dashedbox {
+  border: 1px dashed var(--ink);
+  padding: 9px 10px;
+  margin: 10px 0;
+  background: var(--paper-off);
+}
+
+.dottedlink {
+  color: var(--ink);
+  text-decoration: underline dotted;
+}
+
+.dottedlink:hover {
+  text-decoration: underline solid;
+}
+
+/* ---------- PROFILE ---------- */
+
+.profilepic {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border: 1.5px solid var(--ink);
+  overflow: hidden;
+  margin-bottom: 10px;
+  background: #eee;
+}
+
+.profilepic svg,
+.profilepic img {
+  display: block;
+}
+
+.kv {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+  margin-top: 6px;
+}
+
+.kv tr {
+  border-bottom: 1px dashed var(--ink);
+}
+
+.kv tr:last-child {
+  border-bottom: none;
+}
+
+.kv td {
+  padding: 6px 2px;
+  vertical-align: top;
+}
+
+.kv .k {
+  color: var(--muted);
+  width: 45%;
+}
+
+.kv .v {
+  font-weight: bold;
+  text-align: right;
+}
+
+.kv.iconrows .icon {
+  width: 22px;
+  text-align: left;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.kv.iconrows .k {
+  width: 30%;
+}
+
+/* ---------- CONTACT ---------- */
+
+.chunkybtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1.5px solid var(--ink);
+  background: var(--gray-btn);
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  text-decoration: none;
+  color: var(--ink);
+  font-size: 16px;
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.chunkybtn:last-child {
+  margin-bottom: 0;
+}
+
+.chunkybtn:hover {
+  background: var(--gray-btn-dark);
+}
+
+.chunkybtn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 var(--ink);
+}
+
+.chunkyicon {
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  padding: 1px 5px;
+  font-size: 12px;
+}
+
+/* ---------- NOW PLAYING ---------- */
+
+.npwidget {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  color: var(--ink);
+  border: 1px dashed var(--ink);
+  padding: 14px;
+  background: var(--paper-off);
+}
+
+.npwidget:hover {
+  background: #f0f0ec;
+}
+
+.cdicon svg {
+  display: block;
+  width: 44px;
+  height: 44px;
+  animation: spin 6s linear infinite;
+  animation-play-state: paused;
+}
+
+.npwidget:hover .cdicon svg {
+  animation-play-state: running;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.songtitle {
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.artistname {
+  font-size: 16px;
+  color: var(--muted);
+}
+
+/* ---------- WELCOME ---------- */
+
+.pillrow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.pillbtn {
+  font-family: inherit;
+  font-size: 12px;
+  background: var(--gray-btn);
+  border: 1px solid var(--ink);
+  padding: 4px 9px;
+  box-shadow: 1.5px 1.5px 0 var(--ink);
+  cursor: pointer;
+  color: var(--ink);
+}
+
+.pillbtn:hover {
+  background: var(--gray-btn-dark);
+}
+
+.pillbtn:active {
+  transform: translate(1.5px, 1.5px);
+  box-shadow: 0 0 0 var(--ink);
+}
+
+/* ---------- UPDATES ---------- */
+
+.updateentry {
+  display: flex;
+  gap: 10px;
+  padding: 7px 0;
+  border-bottom: 1px dashed var(--ink);
+  font-size: 15px;
+}
+
+.updateentry:last-child {
+  border-bottom: none;
+}
+
+.updatedate {
+  flex-shrink: 0;
+  width: 88px;
+  color: var(--muted);
+}
+
+/* ---------- MINIBLOG ---------- */
+
+.blogpost {
+  border: 1px dashed var(--ink);
+  background: var(--paper-off);
+  padding: 10px 12px;
+  margin-bottom: 12px;
+}
+
+.blogpost:last-child {
+  margin-bottom: 0;
+}
+
+.postdate {
+  display: inline-block;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  font-size: 12px;
+  padding: 1px 7px;
+  margin-bottom: 6px;
+  color: var(--muted);
+}
+
+.posttitle {
+  font-size: 18px;
+  margin: 0 0 6px 0;
+  font-weight: bold;
+}
+
+.tagrow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.tag {
+  font-size: 12px;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  padding: 2px 7px;
+  color: var(--muted);
+}
+
+/* ---------- MINIGALLERY ---------- */
+
+.gallerygrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.galleryitem {
+  aspect-ratio: 1 / 1;
+  border: 1.5px solid var(--ink);
+  overflow: hidden;
+  background:
+    repeating-linear-gradient(
+      45deg,
+      #eeeeee,
+      #eeeeee 6px,
+      #e4e4e4 6px,
+      #e4e4e4 12px
+    );
+}
+
+/* ---------- FOOTER ---------- */
+
+.pagefooter {
+  text-align: center;
+  margin-top: 20px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--ink);
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.onlinedot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #2e9e2e;
+  margin-right: 4px;
+  animation: blink 1.6s steps(1) infinite;
+}
+
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0.25; }
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 760px) {
+  .page {
+    margin: 8px auto 24px auto;
+    padding: 0 8px;
+  }
+
+  .layout {
+    grid-template-columns: 168px 1fr;
+    gap: 8px;
+  }
+
+  .sidebar,
+  .main {
+    gap: 8px;
+  }
+
+  .sidebar {
+    min-width: 0;
+  }
+
+  .tworow {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .topbar {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 5px;
+    margin-bottom: 8px;
+  }
+
+  .clockbox {
+    font-size: 11px;
+    padding: 4px 7px;
+    box-shadow: 2px 2px 0 var(--ink);
+  }
+
+  .badge {
+    font-size: 12px;
+    padding: 4px 7px;
+    box-shadow: 2px 2px 0 var(--ink);
+  }
+
+  .mailicon {
+    padding: 3px 5px;
+    box-shadow: 2px 2px 0 var(--ink);
+  }
+
+  .addressbar {
+    margin-bottom: 6px;
+  }
+
+  .urlfield {
+    font-size: 13px;
+    padding: 5px 8px;
+    box-shadow: 2px 2px 0 var(--ink);
+  }
+
+  .navrow {
+    gap: 5px;
+    margin-bottom: 10px;
+  }
+
+  .navbtn {
+    flex: 1 1 calc(33.333% - 5px);
+    text-align: center;
+    font-size: 13px;
+    padding: 7px 6px;
+    box-shadow: 2px 2px 0 var(--ink);
+  }
+
+  body {
+    font-size: 15px;
+  }
+
+  .smalltext {
+    font-size: 14px;
+  }
+
+  .window {
+    box-shadow: 2.5px 2.5px 0 var(--ink);
+  }
+
+  .winhead {
+    padding: 4px 7px;
+    gap: 5px;
+  }
+
+  .wintitle {
+    font-size: 12px;
+  }
+
+  .winctl {
+    font-size: 9px;
+    letter-spacing: 2px;
+  }
+
+  .winbody {
+    padding: 8px;
+  }
+
+  .profilepic {
+    aspect-ratio: 1 / 1;
+    max-width: 100%;
+  }
+
+  .sidebar .kv .k,
+  .sidebar .kv .v {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+
+  .sidebar .dashedbox {
+    padding: 5px 6px;
+    margin: 6px 0;
+    font-size: 11px;
+    line-height: 1.25;
+  }
+
+  .sidebar .kv tr {
+    display: block;
+    padding: 2px 0;
+  }
+
+  .sidebar .kv .v {
+    margin-top: 1px;
+  }
+
+  .sidebar .chunkybtn {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+  }
+
+  .sidebar .npinfo {
+    min-width: 0;
+    overflow-wrap: break-word;
+  }
+
+  .sidebar .npwidget {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 12px;
+  }
+
+  .sidebar .cdicon svg {
+    width: 34px;
+    height: 34px;
+  }
+
+  .dashedbox {
+    padding: 7px 8px;
+    margin: 8px 0;
+  }
+
+  .kv, .kv.iconrows {
+    font-size: 13px;
+  }
+
+  .kv td {
+    padding: 4px 2px;
+  }
+
+  .kv .k, .kv.iconrows .k {
+    width: 40%;
+  }
+
+  .chunkybtn {
+    padding: 7px 10px;
+    font-size: 14px;
+    margin-bottom: 6px;
+    box-shadow: 2px 2px 0 var(--ink);
+  }
+
+  .npwidget {
+    padding: 12px;
+  }
+
+  .cdicon svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  .songtitle {
+    font-size: 17px;
+  }
+
+  .artistname {
+    font-size: 14px;
+  }
+
+  .pillrow {
+    gap: 5px;
+  }
+
+  .pillbtn {
+    padding: 4px 8px;
+    font-size: 11px;
+    box-shadow: 1px 1px 0 var(--ink);
+  }
+
+  .updateentry {
+    padding: 5px 0;
+    font-size: 13px;
+    gap: 8px;
+  }
+
+  .updatedate {
+    width: 66px;
+    font-size: 12px;
+  }
+
+  .blogpost {
+    padding: 8px 9px;
+    margin-bottom: 8px;
+  }
+
+  .posttitle {
+    font-size: 15px;
+  }
+
+  .postdate {
+    font-size: 10px;
+    padding: 1px 6px;
+  }
+
+  .tag {
+    font-size: 10px;
+    padding: 1px 5px;
+  }
+
+  .pagefooter {
+    font-size: 12px;
+    margin-top: 14px;
+    padding-top: 10px;
+  }
+}
+
+@media (max-width: 420px) {
+  .layout {
+    grid-template-columns: 128px 1fr;
+    gap: 6px;
+  }
+
+  .badge {
+    font-size: 10px;
+    padding: 3px 6px;
+  }
+
+  .clockbox {
+    display: none;
+  }
+
+  .navbtn {
+    flex: 1 1 calc(50% - 5px);
+    font-size: 12px;
+    padding: 6px 5px;
+  }
+
+  .wintitle {
+    font-size: 11px;
+  }
+
+  .sidebar .wintitle {
+    font-size: 9px;
+    letter-spacing: 0.5px;
+  }
+
+  .sidebar .smalltext {
+    font-size: 11px;
+  }
+
+  .sidebar .kv,
+  .sidebar .kv.iconrows {
+    font-size: 11px;
+  }
+
+  .sidebar .chunkybtn {
+    font-size: 11px;
+    padding: 6px 8px;
+  }
+
+  .sidebar .songtitle {
+    font-size: 15px;
+  }
+
+  .sidebar .artistname {
+    font-size: 13px;
+  }
+
+  .winbody {
+    padding: 6px;
+  }
+
+  .profilepic {
+    max-width: 100%;
+  }
+
+  body {
+    font-size: 14px;
+  }
+
+  .smalltext {
+    font-size: 13px;
+  }
+
+  .updateentry {
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .updatedate {
+    width: auto;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="badge">MOH'S CORNER</div>
+    <div class="clockbox" id="clockbox">loading time...</div>
+    <div class="mailicon" title="you have no new mail">
+      <svg viewBox="0 0 24 16" width="20" height="14">
+        <rect x="1" y="1" width="22" height="14" fill="#fff" stroke="#111" stroke-width="1.2"/>
+        <path d="M1 1 L12 10 L23 1" fill="none" stroke="#111" stroke-width="1.2"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ADDRESS BAR -->
+  <div class="addressbar">
+    <div class="urlfield">
+      <svg class="homeicon" viewBox="0 0 16 16" width="12" height="12">
+        <path d="M8 1 L15 7 H13 V15 H3 V7 H1 Z" fill="none" stroke="#111" stroke-width="1"/>
+      </svg>
+      <span>moh's personal site</span>
+      <span class="star">&#9733;</span>
+    </div>
+  </div>
+
+  <!-- NAV BUTTONS -->
+  <nav class="navrow">
+    <button class="navbtn" data-target="profile">index</button>
+    <button class="navbtn" data-target="welcome">about</button>
+    <button class="navbtn" data-target="nowplaying">music</button>
+    <button class="navbtn" data-target="contact">contact</button>
+  </nav>
+
+  <!-- MAIN GRID -->
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+      <section class="window" id="profile">
+        <header class="winhead">
+          <span class="winicon">&#9679;</span>
+          <span class="wintitle">PROFILE</span>
+          <span class="winctl">&minus; &#9633; &times;</span>
+        </header>
+        <div class="winbody">
+          <div class="profilepic">
+            <img src="moh.jpeg" alt="Moh" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <table class="kv">
+            <tr><td class="k">age</td><td class="v" id="ageValue">--</td></tr>
+            <tr><td class="k">pronouns</td><td class="v">he/him</td></tr>
+            <tr><td class="k">from</td><td class="v">Iraq</td></tr>
+            <tr><td class="k">location</td><td class="v">internet</td></tr>
+          </table>
+        </div>
+      </section>
+
+      <section class="window" id="contact">
+        <header class="winhead">
+          <span class="winicon">&#9679;</span>
+          <span class="wintitle">CONTACT</span>
+          <span class="winctl">&minus; &#9633; &times;</span>
+        </header>
+        <div class="winbody">
+          <a href="https://www.instagram.com/mu_64n/" target="_blank" rel="noopener" class="chunkybtn">
+            <span>instagram</span>
+            <span class="chunkyicon">@</span>
+          </a>
+          <a href="https://open.spotify.com/user/31rrgvuhatctd7q3uq5j6d4dd6ra" target="_blank" rel="noopener" class="chunkybtn">
+            <span>spotify</span>
+            <span class="chunkyicon">&#9834;</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="window" id="nowplaying">
+        <header class="winhead">
+          <span class="winicon">&#9679;</span>
+          <span class="wintitle">NOW PLAYING</span>
+          <span class="winctl">&minus; &#9633; &times;</span>
+        </header>
+        <div class="winbody">
+          <a href="#" class="npwidget" id="npWidget" target="_blank" rel="noopener">
+            <div class="cdicon">
+              <svg viewBox="0 0 32 32" width="32" height="32">
+                <circle cx="16" cy="16" r="14" fill="#ddd" stroke="#111" stroke-width="1.2"/>
+                <circle cx="16" cy="16" r="4" fill="#fff" stroke="#111" stroke-width="1"/>
+                <circle cx="16" cy="16" r="1.2" fill="#111"/>
+              </svg>
+            </div>
+            <div class="npinfo">
+              <div class="songtitle" id="npTitle">loading...</div>
+              <div class="artistname" id="npArtist"></div>
+            </div>
+          </a>
+          <p class="smalltext" style="margin-top:8px;">click to open in spotify &bull; click again to skip</p>
+        </div>
+      </section>
+
+      <section class="window" id="siteinfo">
+        <header class="winhead">
+          <span class="winicon">&#9679;</span>
+          <span class="wintitle">SITE INFO</span>
+          <span class="winctl">&minus; &#9633; &times;</span>
+        </header>
+        <div class="winbody">
+          <table class="kv">
+            <tr><td class="k">online</td><td class="v">since 2026</td></tr>
+            <tr><td class="k">layout</td><td class="v">v1.0</td></tr>
+            <tr><td class="k">made by</td><td class="v">NEXus</td></tr>
+          </table>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main">
+
+      <section class="window" id="welcome">
+        <header class="winhead">
+          <span class="winicon">&#9679;</span>
+          <span class="wintitle">WELCOME</span>
+          <span class="winctl">&minus; &#9633; &times;</span>
+        </header>
+        <div class="winbody">
+          <p class="smalltext">
+            welcome to my little site. i'm moh — i play a lot of chess (badly, but with confidence),
+            draw when i have a pencil and a spare ten minutes, write things that mostly stay in my
+            notes app, and always have music playing in the background of whatever i'm doing.
+          </p>
+          <div class="dashedbox smalltext">
+            this page is basically a scrapbook of that stuff. it'll probably change a lot as i figure
+            out what i actually want it to look like, so check back sometime.
+          </div>
+          <div class="pillrow">
+            <button class="pillbtn">chess</button>
+            <button class="pillbtn">drawing</button>
+            <button class="pillbtn">writing</button>
+            <button class="pillbtn">music</button>
+          </div>
+        </div>
+      </section>
+
+      <div class="tworow">
+
+        <section class="window" id="updates">
+          <header class="winhead">
+            <span class="winicon">&#9679;</span>
+            <span class="wintitle">UPDATES</span>
+            <span class="winctl">&minus; &#9633; &times;</span>
+          </header>
+          <div class="winbody">
+            <div class="updateentry">
+              <div class="updatedate">09/09/2026</div>
+              <div class="updatetext">redesigned the profile section, added a proper photo</div>
+            </div>
+            <div class="updateentry">
+              <div class="updatedate">02/09/2026</div>
+              <div class="updatetext">added some music to the now playing widget</div>
+            </div>
+            <div class="updateentry">
+              <div class="updatedate">24/08/2026</div>
+              <div class="updatetext">working on the gallery, more to come soon</div>
+            </div>
+            <div class="updateentry">
+              <div class="updatedate">15/08/2026</div>
+              <div class="updatetext">updated the site, fixed a few small things</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="window" id="currently">
+          <header class="winhead">
+            <span class="winicon">&#9679;</span>
+            <span class="wintitle">CURRENTLY</span>
+            <span class="winctl">&minus; &#9633; &times;</span>
+          </header>
+          <div class="winbody">
+            <table class="kv iconrows">
+              <tr><td class="icon">&#9737;</td><td class="k">date</td><td class="v" id="currentDate">--</td></tr>
+              <tr><td class="icon">&#9825;</td><td class="k">mood</td><td class="v">focused</td></tr>
+              <tr><td class="icon">&#9834;</td><td class="k">music</td><td class="v" id="currentMusic">--</td></tr>
+              <tr><td class="icon">&#9670;</td><td class="k">hobby</td><td class="v">chess</td></tr>
+            </table>
+          </div>
+        </section>
+
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="pagefooter smalltext">
+    <span class="onlinedot" id="onlinedot"></span> online now &nbsp;&bull;&nbsp; best viewed at 1024x768 &nbsp;&bull;&nbsp; &copy; 2026 moh
+  </footer>
+
+</div>
+
+<script>
+// ---------- Live clock in top bar ----------
+function updateClock() {
+  const el = document.getElementById('clockbox');
+  if (!el) return;
+
+  const now = new Date();
+  const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+  const day = days[now.getDay()];
+  const month = months[now.getMonth()];
+  const date = now.getDate();
+  const year = now.getFullYear();
+
+  let hours = now.getHours();
+  const minutes = now.getMinutes().toString().padStart(2, '0');
+  const ampm = hours >= 12 ? 'PM' : 'AM';
+  hours = hours % 12;
+  if (hours === 0) hours = 12;
+
+  el.textContent = `${day}, ${month} ${date}, ${year} \u2022 ${hours}:${minutes} ${ampm}`;
+}
+
+updateClock();
+setInterval(updateClock, 1000 * 30);
+
+// ---------- Currently: date field ----------
+function updateCurrentDate() {
+  const el = document.getElementById('currentDate');
+  if (!el) return;
+  const now = new Date();
+  const months = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+  el.textContent = `${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()}`;
+}
+updateCurrentDate();
+
+// ---------- Dynamic age calculation ----------
+// Birthdate: September 9, 2010. Age increments automatically every Sept 9.
+function calculateAge(birthYear, birthMonthIndex, birthDay) {
+  const today = new Date();
+  let age = today.getFullYear() - birthYear;
+  const hasHadBirthdayThisYear =
+    today.getMonth() > birthMonthIndex ||
+    (today.getMonth() === birthMonthIndex && today.getDate() >= birthDay);
+  if (!hasHadBirthdayThisYear) {
+    age -= 1;
+  }
+  return age;
+}
+
+function updateAge() {
+  const el = document.getElementById('ageValue');
+  if (!el) return;
+  // Month index 8 = September (0-indexed)
+  const age = calculateAge(2010, 8, 9);
+  el.textContent = age;
+}
+updateAge();
+
+// ---------- Nav buttons scroll to section ----------
+document.querySelectorAll('.navbtn').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const targetId = btn.getAttribute('data-target');
+    const targetEl = document.getElementById(targetId);
+    if (targetEl) {
+      targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// ---------- Now Playing: song switcher / playlist ----------
+const playlist = [
+  {
+    title: "Everything I Wanted",
+    artist: "Billie Eilish",
+    url: "https://open.spotify.com/search/Everything%20I%20Wanted%20Billie%20Eilish"
+  },
+  {
+    title: "I Think They Call This Love",
+    artist: "Matthew Ifield",
+    url: "https://open.spotify.com/search/I%20Think%20They%20Call%20This%20Love%20Matthew%20Ifield"
+  },
+  {
+    title: "Don't Stop the Music",
+    artist: "Rihanna",
+    url: "https://open.spotify.com/search/Don%27t%20Stop%20the%20Music%20Rihanna"
+  }
+];
+
+let currentSongIndex = 0;
+
+function renderCurrentSong() {
+  const song = playlist[currentSongIndex];
+  const titleEl = document.getElementById('npTitle');
+  const artistEl = document.getElementById('npArtist');
+  const widgetEl = document.getElementById('npWidget');
+  const currentMusicEl = document.getElementById('currentMusic');
+
+  if (titleEl) titleEl.textContent = song.title;
+  if (artistEl) artistEl.textContent = song.artist;
+  if (widgetEl) widgetEl.href = song.url;
+  if (currentMusicEl) currentMusicEl.textContent = `${song.title} - ${song.artist}`;
+}
+
+renderCurrentSong();
+
+const npWidget = document.getElementById('npWidget');
+if (npWidget) {
+  npWidget.addEventListener('click', (e) => {
+    // Open the current song in Spotify (new tab, via href + target already set),
+    // then advance to the next song in the playlist for next time.
+    currentSongIndex = (currentSongIndex + 1) % playlist.length;
+    // Small delay so the click still opens the song that was showing when clicked
+    setTimeout(renderCurrentSong, 50);
+  });
+}
+
+// ---------- Tiny pixel cursor trail (very subtle, optional charm) ----------
+(function () {
+  let lastTime = 0;
+  document.addEventListener('mousemove', (e) => {
+    const now = Date.now();
+    if (now - lastTime < 60) return; // throttle
+    lastTime = now;
+
+    const dot = document.createElement('div');
+    dot.style.position = 'fixed';
+    dot.style.left = e.clientX + 'px';
+    dot.style.top = e.clientY + 'px';
+    dot.style.width = '3px';
+    dot.style.height = '3px';
+    dot.style.background = '#111';
+    dot.style.pointerEvents = 'none';
+    dot.style.zIndex = '9999';
+    dot.style.opacity = '0.5';
+    document.body.appendChild(dot);
+
+    setTimeout(() => {
+      dot.style.transition = 'opacity 0.4s ease';
+      dot.style.opacity = '0';
+    }, 30);
+
+    setTimeout(() => dot.remove(), 450);
+  });
+})();
+
+</script>
+</body>
+</html>
